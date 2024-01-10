@@ -11,6 +11,7 @@
 #include "nlm/Nlm.hpp"
 #include "nla/Nla.hpp"
 #include "winhttp/Winhttp.h"
+#include "dpapi/Dpapi.hpp"
 #define VERSION L"1.0"
 #define NLM_MODULE L"nlm"
 #define NLA_MODULE L"nla"
@@ -72,6 +73,8 @@ W32Module* build_module(const std::wstring input)
         return new Nla();
     else if (L"winhttp" == input)
         return new Winhttp();
+    else if (L"dpapi" == input)
+        return new Dpapi();
     return nullptr;
 }
 
