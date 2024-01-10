@@ -5,11 +5,7 @@
 class Nlm : public W32Module
 {
 public:
-	Nlm() 
-	{
-		CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
-		m_name = L"nlm";
-	}
+	Nlm();
 	~Nlm()
 	{
 		CoUninitialize();

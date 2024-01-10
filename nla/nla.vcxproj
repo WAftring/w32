@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6381b044-0a3a-458d-98fb-88258e2fe82a}</ProjectGuid>
-    <RootNamespace>nlm</RootNamespace>
+    <ProjectGuid>{75b42f84-418d-4121-841a-79a02ae8ba76}</ProjectGuid>
+    <RootNamespace>nla</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -143,15 +143,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="nlm.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\W32Module\W32Module.vcxproj">
       <Project>{0ccbe62c-f8a9-4bef-9993-d11ad4bb9298}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Nlm.hpp" />
+    <ClInclude Include="Nla.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Nla.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

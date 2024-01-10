@@ -23,26 +23,14 @@ void get_connection_details(std::vector<std::wstring>& tokens);
 void print_network(INetwork* network, bool verbose);
 void print_connection(INetworkConnection* connection, bool verbose);
 
-std::map<const std::wstring, InputFunc> g_functions = {
-	{ GET_NETWORKS, get_networks },
-	{ GET_NETWORK_DETAILS, get_network_details },
-	{ GET_CONNECTIONS, get_connections },
-	{ }
-};
-
-void Nlm::process_input(std::vector<std::wstring>& tokens)
+Nlm::Nlm()
 {
-	std::wstring func = tokens[0];
-	if (L"help" == func)
-		help();
-	else if (g_functions.find(func) != g_functions.end())
-	{
-		if (tokens.size() == 1)
-			tokens.clear();
-		else
-			tokens.erase(tokens.begin());
-		g_functions[func](tokens);
-	}
+	CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+	m_name = L"nlm";
+	m_functions[GET_NETWORKS] = get_networks;
+	m_functions[GET_NETWORK_DETAILS] = get_network_details;
+	m_functions[GET_CONNECTIONS] = get_connections;
+	m_functions[GET_CONNECTION_DETAILS] = get_connection_details;
 }
 
 void Nlm::help()

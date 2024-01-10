@@ -8,9 +8,13 @@
 #include <iterator>
 #include <algorithm>
 #include "W32Module.hpp"
-#include "Nlm.hpp"
+#include "nlm/Nlm.hpp"
+#include "nla/Nla.hpp"
+#include "winhttp/Winhttp.h"
 #define VERSION L"1.0"
 #define NLM_MODULE L"nlm"
+#define NLA_MODULE L"nla"
+#define WINHTTP_MODULE L"winhttp"
 W32Module* g_activeModule = nullptr;
 
 W32Module* build_module(const std::wstring input);
@@ -64,6 +68,10 @@ W32Module* build_module(const std::wstring input)
 {
     if (L"nlm" == input)
         return new Nlm();
+    else if (L"nla" == input)
+        return new Nla();
+    else if (L"winhttp" == input)
+        return new Winhttp();
     return nullptr;
 }
 
@@ -116,4 +124,6 @@ void supported_modules()
 {
     wprintf(L"Supported Modules:\n==========\n");
     wprintf(NLM_MODULE L"\tnetwork list manager\n");
+    wprintf(NLA_MODULE L"\tnetwork location awareness\n");
+    wprintf(WINHTTP_MODULE L"\twinhttp\n");
 }
