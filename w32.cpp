@@ -12,10 +12,12 @@
 #include "nla/Nla.hpp"
 #include "winhttp/Winhttp.h"
 #include "dpapi/Dpapi.hpp"
+#include "wevt/Wevt.hpp"
 #define VERSION L"1.0"
 #define NLM_MODULE L"nlm"
 #define NLA_MODULE L"nla"
 #define WINHTTP_MODULE L"winhttp"
+#define WEVT_MODULE L"wevt"
 W32Module* g_activeModule = nullptr;
 
 W32Module* build_module(const std::wstring input);
@@ -67,6 +69,7 @@ int wmain(int argc, wchar_t* argv[])
 
 W32Module* build_module(const std::wstring input)
 {
+    // TODO(will): Replace these with the defines
     if (L"nlm" == input)
         return new Nlm();
     else if (L"nla" == input)
@@ -75,6 +78,8 @@ W32Module* build_module(const std::wstring input)
         return new Winhttp();
     else if (L"dpapi" == input)
         return new Dpapi();
+    else if (L"wevt" == input)
+        return new Wevt();
     return nullptr;
 }
 
@@ -129,4 +134,5 @@ void supported_modules()
     wprintf(NLM_MODULE L"\tnetwork list manager\n");
     wprintf(NLA_MODULE L"\tnetwork location awareness\n");
     wprintf(WINHTTP_MODULE L"\twinhttp\n");
+    wprintf(WEVT_MODULE L"\twindows event log\n");
 }
